@@ -30,7 +30,7 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/sonarr:/config
+      - /appdata/sonarr:/config
       - /data:/data
   bazarr:
     container_name: bazarr
@@ -46,7 +46,7 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/bazarr:/config
+      - /appdata/bazarr:/config
       - /data/media:/data/media
   sabnzbd:
     container_name: sabnzbd
@@ -63,5 +63,5 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/sabnzbd:/config
+      - /appdata/sabnzbd:/config
       - /data/usenet:/data/usenet:rw
