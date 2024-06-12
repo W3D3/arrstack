@@ -14,8 +14,8 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/radarr:/config
-      - /data:/data
+      - /mnt/user/appdata/radarr:/config
+      - /mnt/user/data/:/data
   sonarr:
     container_name: sonarr
     image: ghcr.io/hotio/sonarr:latest
@@ -30,8 +30,8 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /appdata/sonarr:/config
-      - /data:/data
+      - /mnt/user/appdata/sonarr:/config
+      - /mnt/user/data:/data
   bazarr:
     container_name: bazarr
     image: ghcr.io/hotio/bazarr:latest
@@ -46,8 +46,8 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /appdata/bazarr:/config
-      - /data/media:/data/media
+      - /mnt/user/appdata/bazarr:/config
+      - /mnt/user/data/media:/data/media
   sabnzbd:
     container_name: sabnzbd
     image: ghcr.io/hotio/sabnzbd:latest
