@@ -90,8 +90,8 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /appdata/sabnzbd:/config
-      - /data/usenet:/data/usenet:rw
+      - /mnt/user/appdata/sabnzbd:/config:rw
+      - /mnt/user/data/usenet:/data/usenet:rw
     labels:
      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sabnzbd.png"
 networks:
