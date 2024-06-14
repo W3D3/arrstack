@@ -8,7 +8,7 @@ services:
       driver: json-file
     networks:
       arrnetwork:
-        ipv4_address: 172.20.0.1
+        ipv4_address: 172.20.0.10
     ports:
       - 7878:7878
     environment:
@@ -27,7 +27,7 @@ services:
       driver: json-file
     networks:
       arrnetwork:
-        ipv4_address: 172.20.0.2
+        ipv4_address: 172.20.0.11
     ports:
       - 8989:8989
     environment:
@@ -44,6 +44,9 @@ services:
     restart: unless-stopped
     logging:
       driver: json-file
+    networks:
+      arrnetwork:
+        ipv4_address: 172.20.0.12
     ports:
       - 6767:6767
     environment:
@@ -60,6 +63,9 @@ services:
     restart: unless-stopped
     logging:
       driver: json-file
+    networks:
+      arrnetwork:
+        ipv4_address: 172.20.0.13
     ports:
       - 8080:8080
       - 9090:9090
