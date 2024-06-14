@@ -54,6 +54,17 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/user/appdata/bazarr:/config:rw
       - /mnt/user/data/media:/data/media:rw
+  prowlarr:
+    container_name: prowlarr
+    image: ghcr.io/hotio/prowlarr
+    ports:
+      - 9696:9696
+    environment:
+      - PUID=99
+      - PGID=100
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /mnt/user/appdata/prowlarr:/config:rw
   sabnzbd:
     container_name: sabnzbd
     image: ghcr.io/hotio/sabnzbd:latest
