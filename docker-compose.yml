@@ -7,9 +7,7 @@ services:
     logging:
       driver: json-file
     networks:
-      arrnetwork:
-        ipv4_address: 172.20.0.10
-      bridge:
+      - arrnetwork
     ports:
       - 7878:7878
     environment:
@@ -27,9 +25,7 @@ services:
     logging:
       driver: json-file
     networks:
-      arrnetwork:
-        ipv4_address: 172.20.0.11
-      bridge:
+      - arrnetwork
     ports:
       - 8989:8989
     environment:
@@ -47,9 +43,7 @@ services:
     logging:
       driver: json-file
     networks:
-      arrnetwork:
-        ipv4_address: 172.20.0.12
-      bridge:
+      - arrnetwork
     ports:
       - 6767:6767
     environment:
@@ -67,9 +61,7 @@ services:
     logging:
       driver: json-file
     networks:
-      arrnetwork:
-        ipv4_address: 172.20.0.13
-      bridge:
+      - arrnetwork
     ports:
       - 8080:8080
       - 9090:9090
@@ -83,9 +75,7 @@ services:
       - /data/usenet:/data/usenet:rw
 networks:
   arrnetwork:
-    internal: true
+    driver: bridge
     ipam:
       config:
         - subnet: 172.20.0.0/24
-  bridge:
-    external: true
