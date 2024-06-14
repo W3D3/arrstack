@@ -6,6 +6,9 @@ services:
     restart: unless-stopped
     logging:
       driver: json-file
+    networks:
+      arrnetwork:
+        ipv4_address: 172.20.0.1
     ports:
       - 7878:7878
     environment:
@@ -22,6 +25,9 @@ services:
     restart: unless-stopped
     logging:
       driver: json-file
+    networks:
+      arrnetwork:
+        ipv4_address: 172.20.0.2
     ports:
       - 8989:8989
     environment:
@@ -65,3 +71,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /appdata/sabnzbd:/config
       - /data/usenet:/data/usenet:rw
+networks:
+  arrnetwork:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
