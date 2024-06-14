@@ -76,3 +76,4 @@ services:
 networks:
   arrnetwork:
     driver: bridge
+    internal: false
