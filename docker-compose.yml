@@ -18,6 +18,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/user/appdata/radarr:/config:rw
       - /mnt/user/data/:/data:rw
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/radarr.png"
   sonarr:
     container_name: sonarr
     image: ghcr.io/hotio/sonarr:latest
@@ -36,6 +38,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/user/appdata/sonarr:/config:rw
       - /mnt/user/data:/data:rw
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sonarr.png"       
   bazarr:
     container_name: bazarr
     image: ghcr.io/hotio/bazarr:latest
@@ -54,6 +58,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/user/appdata/bazarr:/config:rw
       - /mnt/user/data/media:/data/media:rw
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/bazarr.png"
   prowlarr:
     container_name: prowlarr
     image: ghcr.io/hotio/prowlarr
@@ -65,6 +71,8 @@ services:
       - TZ=Europe/Amsterdam
     volumes:
       - /mnt/user/appdata/prowlarr:/config:rw
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/prowlarr.png"
   sabnzbd:
     container_name: sabnzbd
     image: ghcr.io/hotio/sabnzbd:latest
@@ -84,6 +92,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /appdata/sabnzbd:/config
       - /data/usenet:/data/usenet:rw
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sabnzbd.png"
 networks:
   arrnetwork:
     driver: bridge
