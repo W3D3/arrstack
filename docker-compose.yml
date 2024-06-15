@@ -157,7 +157,7 @@ services:
     networks:
       - arrnetwork
     volumes:
-      -/mnt/user/appdata/tautulli:/config
+      - /mnt/user/appdata/tautulli:/config
     environment:
       - PUID=99
       - PGID=100
