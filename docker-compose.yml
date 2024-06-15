@@ -96,6 +96,20 @@ services:
       - /mnt/user/data/usenet:/data/usenet:rw
     labels:
      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sabnzbd.png"
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Europe/Amsterdam
+      - PORT=5055
+    ports:
+      - 5055:5055
+    volumes:
+      - /mnt/user/appdata/config:/app/config
+    labels:
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/overseerr.png"
+    restart: unless-stopped
 networks:
   arrnetwork:
     driver: bridge
