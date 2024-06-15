@@ -114,6 +114,22 @@ services:
     labels:
       - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/overseerr.png"
     restart: unless-stopped
+  tautulli:
+    image: ghcr.io/tautulli/tautulli
+    container_name: tautulli
+    logging:
+      driver: json-file
+    networks:
+      - arrnetwork
+    volumes:
+      -/mnt/user/appdata/tautulli:/config
+    environment:
+      - PUID=99
+      - PGID=100
+      - TZ=<timezone>
+    ports:
+      - 8181:8181
+    restart: unless-stopped
 networks:
   arrnetwork:
     driver: bridge
