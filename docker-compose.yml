@@ -99,6 +99,10 @@ services:
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
+    logging:
+      driver: json-file
+    networks:
+      - arrnetwork
     environment:
       - LOG_LEVEL=debug
       - TZ=Europe/Amsterdam
