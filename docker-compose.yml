@@ -130,6 +130,8 @@ services:
     ports:
       - 8181:8181
     restart: unless-stopped
+    labels:
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/tautulli.png"
 networks:
   arrnetwork:
     driver: bridge
