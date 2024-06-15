@@ -96,6 +96,41 @@ services:
       - /mnt/user/data/usenet:/data/usenet:rw
     labels:
      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sabnzbd.png"
+  rflood:
+    container_name: rflood
+    image: ghcr.io/hotio/rflood
+    networks:
+      - arrnetwork
+    ports:
+      - "3000:3000"
+      - "5000:5000"
+    environment:
+      - PUID=99
+      - PGID=100
+      - TZ=Europe/Amsterdam
+      - FLOOD_AUTH=false
+      - VPN_ENABLED=true #
+      - VPN_CONF=nordvpn-aut132 # READ THIS
+      - VPN_PROVIDER=generic #
+      - VPN_LAN_NETWORK=192.168.0.0/24 #
+      - VPN_LAN_LEAK_ENABLED=false
+      - VPN_EXPOSE_PORTS_ON_LAN #
+      - VPN_AUTO_PORT_FORWARD=false #
+      - VPN_KEEP_LOCAL_DNS=false #
+      - VPN_FIREWALL_TYPE=auto #
+      - VPN_HEALTHCHECK_ENABLED=true
+      - PRIVOXY_ENABLED=false
+      - UNBOUND_ENABLED=false #
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1 #
+      - net.ipv6.conf.all.disable_ipv6=1 #
+    volumes:
+      - /mnt/user/appdata/rflood:/config
+      - /mnt/user/data/torrents:/data/torrents
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/flood.png"
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
