@@ -152,7 +152,7 @@ services:
       - internalNode=true
       - inContainer=true
       - ffmpegVersion=6
-      - nodeName=MyInternalNode
+      - nodeName=TdarrMainNode
       - NVIDIA_DRIVER_CAPABILITIES=all
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
