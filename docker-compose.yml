@@ -60,6 +60,44 @@ services:
       - /mnt/user/data/media:/data/media:rw
     labels:
      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/bazarr.png"
+  readarr:
+    container_name: readarr
+    image: ghcr.io/hotio/readarr
+    restart: unless-stopped
+    networks:
+      - arrnetwork
+    logging:
+      driver: json-file
+    ports:
+      - "8787:8787"
+    environment:
+      - PUID=99
+      - PGID=100
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /mnt/user/appdata/readarr:/config
+      - /mnt/user/data:/data
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/readarr.png"
+  lidarr:
+    container_name: lidarr
+    image: ghcr.io/hotio/lidarr
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    networks:
+      - arrnetwork
+    ports:
+      - "8686:8686"
+    environment:
+      - PUID=99
+      - PGID=100
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /mnt/user/appdata/lidarr:/config
+      - /mnt/user/data:/data
+    labels:
+     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/lidarr.png"
   prowlarr:
     container_name: prowlarr
     image: ghcr.io/hotio/prowlarr
