@@ -233,6 +233,7 @@ services:
       - /mnt/user/appdata/tdarr/configs:/app/configs
       - /mnt/user/appdata/tdarr/logs:/app/logs
       - /mnt/user/data/media:/media
+      - /mnt/user/private:/private
       - /mnt/user/appdata/tdarr/transcode_cache:/temp
 networks:
   arrnetwork:
