@@ -19,7 +19,10 @@ services:
       - /mnt/user/appdata/radarr:/config:rw
       - /mnt/user/data/:/data:rw
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/radarr.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/radarr.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.wedenig.local`)"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
   sonarr:
     container_name: sonarr
     image: ghcr.io/hotio/sonarr:latest
@@ -39,7 +42,10 @@ services:
       - /mnt/user/appdata/sonarr:/config:rw
       - /mnt/user/data:/data:rw
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sonarr.png"       
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sonarr.png"     
+      - "traefik.enable=true"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.wedenig.local`)"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"  
   bazarr:
     container_name: bazarr
     image: ghcr.io/hotio/bazarr:latest
@@ -59,7 +65,10 @@ services:
       - /mnt/user/appdata/bazarr:/config:rw
       - /mnt/user/data/media:/data/media:rw
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/bazarr.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/bazarr.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.wedenig.local`)"
+      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"  
   readarr:
     container_name: readarr
     image: ghcr.io/hotio/readarr
@@ -78,7 +87,10 @@ services:
       - /mnt/user/appdata/readarr:/config
       - /mnt/user/data:/data
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/readarr.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/readarr.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.readarr.rule=Host(`readarr.wedenig.local`)"
+      - "traefik.http.services.readarr.loadbalancer.server.port=8686"  
   lidarr:
     container_name: lidarr
     image: ghcr.io/hotio/lidarr
@@ -97,7 +109,10 @@ services:
       - /mnt/user/appdata/lidarr:/config
       - /mnt/user/data:/data
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/lidarr.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/lidarr.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.lidarr.rule=Host(`lidarr.wedenig.local`)"
+      - "traefik.http.services.lidarr.loadbalancer.server.port=8686"  
   prowlarr:
     container_name: prowlarr
     image: ghcr.io/hotio/prowlarr
@@ -112,7 +127,10 @@ services:
     volumes:
       - /mnt/user/appdata/prowlarr:/config:rw
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/prowlarr.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/prowlarr.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.wedenig.local`)"
+      - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"  
   sabnzbd:
     container_name: sabnzbd
     image: ghcr.io/hotio/sabnzbd:latest
@@ -133,7 +151,10 @@ services:
       - /mnt/user/appdata/sabnzbd:/config:rw
       - /mnt/user/data/usenet:/data/usenet:rw
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sabnzbd.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/sabnzbd.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.wedenig.local`)"
+      - "traefik.http.services.sabnzbd.loadbalancer.server.port=8080"  
   qbittorrent:
     container_name: qbittorrent
     image: ghcr.io/hotio/qbittorrent
@@ -168,7 +189,10 @@ services:
       - net.ipv4.conf.all.src_valid_mark=1 #
       - net.ipv6.conf.all.disable_ipv6=1 #
     labels:
-     - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/qbittorrent.png"
+      - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/qbittorrent.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.qbittorrent.rule=Host(`torrents.wedenig.local`)"
+      - "traefik.http.services.qbittorrent.loadbalancer.server.port=8080"  
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
@@ -186,6 +210,9 @@ services:
       - /mnt/user/appdata/config:/app/config
     labels:
       - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/overseerr.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.overseerr.rule=Host(`overseerr.wedenig.local`)"
+      - "traefik.http.services.overseerr.loadbalancer.server.port=5055"  
     restart: unless-stopped
   tautulli:
     image: ghcr.io/tautulli/tautulli
@@ -205,6 +232,9 @@ services:
     restart: unless-stopped
     labels:
       - "net.unraid.docker.icon=https://hotio.dev/webhook-avatars/tautulli.png"
+      - "traefik.enable=true"
+      - "traefik.http.routers.tautulli.rule=Host(`tautulli.wedenig.local`)"
+      - "traefik.http.services.tautulli.loadbalancer.server.port=8181"  
   tdarr:
     container_name: tdarr
     image: ghcr.io/haveagitgat/tdarr:latest
@@ -235,6 +265,11 @@ services:
       - /mnt/user/data/media:/media
       - /mnt/user/private:/private
       - /mnt/user/appdata/tdarr/transcode_cache:/temp
+    labels:
+      - "net.unraid.docker.icon=https://home.tdarr.io/static/media/logo3-min.246d6df44c7f16ddebaf.pngng"
+      - "traefik.enable=true"
+      - "traefik.http.routers.tdarr.rule=Host(`tdarr.wedenig.local`)"
+      - "traefik.http.services.tdarr.loadbalancer.server.port=8265"
 networks:
   arrnetwork:
     driver: bridge
